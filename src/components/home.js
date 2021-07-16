@@ -39,7 +39,7 @@ export default class Home extends Component {
                                     <TableRow key={item._id}>
                                         <TableCell >{index + 1}</TableCell>
                                         <TableCell >{item.name}</TableCell>
-                                        <TableCell>{item.students.join(',')}</TableCell>
+                                        <TableCell>{item.students ? item.students.join(',') : ''}</TableCell>
                                     </TableRow>
                                 ))
                             }

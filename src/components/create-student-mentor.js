@@ -50,7 +50,7 @@ class CreateStudent extends Component {
     }
 
     handleSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         if (this.props.location.pathname.includes('create-student')) {
             axios.post('https://mentor-student-api.herokuapp.com/students/add',
                 [{ name: this.state.name }]

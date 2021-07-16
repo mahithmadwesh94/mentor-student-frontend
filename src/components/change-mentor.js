@@ -42,13 +42,17 @@ export default class ChangeMentor extends Component {
     handleMentorChange = (event) => {
         if (this.state.previousMentor !== event.target.value) {
             this.setState({ newMentor: event.target.value })
+            this.setState({ mentorId: event.target.value })
         }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.newMentor && this.state.newMentor !== this.state.previousMentor) {
-            axios.post(`https://mentor-student-api.herokuapp.com/mentors/remove-student/${this.state.previousMentor}`)
+            axios.post(`https://mentor-student-api.herokuapp.com/mentors/remove-student/${this.state.previousMentor}`, {
+                studentName: this.state.selectedStudentName,
+                newMentorId: this.state.newMentor
+            })
                 .then(() => alert('mentor updated'))
                 .catch((err) => console.log(err))
         }
